@@ -1,0 +1,40 @@
+#
+#    Git
+#
+
+# Set up git user as me
+alias gitadam='git config --global user.name AdamPettinger && git config --global user.email adam.pettinger@utexas.edu'
+
+# Git command shortcuts
+alias gitst='git status'
+alias gitbr='git branch -a -v'
+
+
+#
+#    Catkin
+#
+# Build with half the computer cores and a list of args for package name
+# No args = full catkin build
+cb() {
+    catkin build  -j $(($(nproc) / 2)) $@
+}
+
+# Build with all cores but 1 and a list of args for package name
+# No args = full catkin build
+cbf() {
+    catkin build  -j $(($(nproc) - 1)) $@
+}
+
+# Catkin clean without prompting for confirmation
+alias cc='catkin clean --yes'
+
+
+#
+#    Navigation
+#
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
