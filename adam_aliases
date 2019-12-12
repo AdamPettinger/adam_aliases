@@ -6,9 +6,24 @@
 alias gitadam='git config --global user.name AdamPettinger && git config --global user.email adam.pettinger@utexas.edu'
 
 # Git command shortcuts
-alias gitst='git status'
-alias gitbr='git branch -a -v'
+alias gs='git status'
+alias gb='git branch -a -v'
+gd() {
+    git diff  --color-moved $@
+}
 
+# git log, pretty format. No arg defaults to 10 entries, arg less than 1 prints all entries, anything else prints the number given
+gl() {
+    if [ -z "$1" ]
+    then
+        git log -n 10 --graph --date=relative --pretty=format:'%C(yellow)commit %h %C(bold blue)%<(15,trunc)%an %Cgreen%<(13,trunc)%cd%Cred%d %n%C(yellow)  %m%Creset %s'
+    elif [ "$1" -lt 1 ]
+    then
+        git log --graph --date=relative --pretty=format:'%C(yellow)commit %h %C(bold blue)%<(15,trunc)%an %Cgreen%<(13,trunc)%cd%Cred%d %n%C(yellow)  %m%Creset %s'
+    else
+        git log -n "$1" --graph --date=relative --pretty=format:'%C(yellow)commit %h %C(bold blue)%<(15,trunc)%an %Cgreen%<(13,trunc)%cd%Cred%d %n%C(yellow)  %m%Creset %s'
+    fi 
+}
 
 #
 #    Catkin
@@ -16,13 +31,13 @@ alias gitbr='git branch -a -v'
 # Build with half the computer cores and a list of args for package name
 # No args = full catkin build
 cb() {
-    catkin build  -j $(($(nproc) / 2)) $@
+    clear && catkin build  -j $((($(nproc) + 1)/ 2)) $@
 }
 
 # Build with all cores but 1 and a list of args for package name
 # No args = full catkin build
 cbf() {
-    catkin build  -j $(($(nproc) - 1)) $@
+    clear && catkin build  -j $(($(nproc) - 1)) $@
 }
 
 # Catkin clean without prompting for confirmation
@@ -38,3 +53,12 @@ alias ....='cd ../../../../'
 alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
+
+
+#
+#    ROS Stuff
+#
+# Search for a package's use. Don't include from its own directory, and only include likely file types
+pack_use() {
+    grep -r --include=\*.{cpp,hpp,h,txt,xml,launch,yaml,py,pyc,rviz,md,sh,xacro,urdf} --exclude-dir="$1" "$1"
+}
