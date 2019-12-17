@@ -44,7 +44,7 @@ cbf() {
 alias cc='catkin clean --yes'
 
 # Sources the current workspace. Note: you need to be in the top level of a catkin workspace for this to work
-alias source_here='source ./devel/setup.bash'
+alias source_ws='source ./devel/setup.bash'
 
 
 #
