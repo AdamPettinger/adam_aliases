@@ -25,6 +25,9 @@ gl() {
     fi 
 }
 
+# For updating submodules recursively
+alias gsub='git submodule update --init --recursive'
+
 #
 #    Catkin
 #
