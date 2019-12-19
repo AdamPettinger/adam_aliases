@@ -41,7 +41,9 @@ cbf() {
 }
 
 # Catkin clean without prompting for confirmation
-alias cc='catkin clean --yes'
+cc() {
+    catkin clean --yes $@
+}
 
 # Sources the current workspace. Note: you need to be in the top level of a catkin workspace for this to work
 alias source_ws='source ./devel/setup.bash'
