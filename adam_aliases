@@ -28,6 +28,9 @@ gl() {
 # For updating submodules recursively
 alias gsub='git submodule update --init --recursive'
 
+# View git remotes
+alias grv='git remote -v'
+
 #
 #    Catkin
 #
