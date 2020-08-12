@@ -31,6 +31,12 @@ alias gsub='git submodule update --init --recursive'
 # View git remotes
 alias grv='git remote -v'
 
+# Fetch and pull a PR
+# git_pull_pr(remote, pull-ID, branchname)
+git_pull_pr() {
+    git fetch $1 pull/$2/head:$3 && git checkout $3
+}
+
 #
 #    Catkin
 #
