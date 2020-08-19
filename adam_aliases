@@ -95,3 +95,5 @@ alias clang_cpp='find . -name '*.h' -or -name '*.hpp' -or -name '*.cpp' -o -name
 replace(){
     grep -lr -e $1 * | xargs sed -i "s/$1/$2/g" ;
 }
+
+alias source_aliases='source ~/.bashrc && source ~/.bash_aliases && source ~/adam_aliases/adam_aliases'
