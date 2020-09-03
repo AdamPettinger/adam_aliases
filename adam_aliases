@@ -97,3 +97,6 @@ replace(){
 }
 
 alias source_aliases='source ~/.bashrc && source ~/.bash_aliases && source ~/adam_aliases/adam_aliases'
+alias edit_bashrc='code ~/.bashrc'
+alias edit_bash_aliases='code ~/.bash_aliases'
+alias edit_adam_aliases='code ~/adam_aliases/adam_aliases'
