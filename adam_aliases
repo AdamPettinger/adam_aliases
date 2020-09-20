@@ -37,6 +37,16 @@ git_pull_pr() {
     git fetch $1 pull/$2/head:$3 && git checkout $3
 }
 
+# Cache git user credentials for 15 minutes or N seconds
+git_cache() {
+    if [ -z "$1" ] || [ "$1" -lt 1 ]
+    then
+        git config --global credential.helper cache
+    else
+        git config --global credential.helper 'cache --timeout '$1''
+    fi 
+}
+
 #
 #    Catkin
 #
