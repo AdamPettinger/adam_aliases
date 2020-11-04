@@ -3,7 +3,7 @@
 #
 
 # Set up git user as me
-alias gitadam='git config --global user.name AdamPettinger && git config --global user.email adam.pettinger@utexas.edu'
+alias gitadam='git config --global user.name AdamPettinger ; git config --global user.email adam.pettinger@utexas.edu'
 
 # Git command shortcuts
 alias gs='git status'
@@ -53,13 +53,13 @@ git_cache() {
 # Build with half the computer cores and a list of args for package name
 # No args = full catkin build
 cb() {
-    clear && catkin build  -j $((($(nproc) + 1)/ 2)) $@
+    clear ; catkin build  -j $((($(nproc) + 1)/ 2)) $@
 }
 
 # Build with all cores but 1 and a list of args for package name
 # No args = full catkin build
 cbf() {
-    clear && catkin build  -j $(($(nproc) - 1)) $@
+    clear ; catkin build  -j $(($(nproc) - 1)) $@
 }
 
 # Catkin clean without prompting for confirmation
@@ -90,7 +90,7 @@ pack_use() {
     grep -r --include=\*.{cpp,hpp,h,txt,xml,launch,yaml,py,pyc,rviz,md,sh,xacro,urdf} --exclude-dir="$1" "$1"
 }
 
-alias killros='killall -9 roscore && killall -9 rosmaster'
+alias killros='killall -9 roscore ; killall -9 rosmaster'
 
 #
 #   C++ Formatting
@@ -106,7 +106,7 @@ replace(){
     grep -lr -e $1 * | xargs sed -i "s/$1/$2/g" ;
 }
 
-alias source_aliases='source ~/.bashrc && source ~/.bash_aliases && source ~/adam_aliases/adam_aliases'
+alias source_aliases='source ~/.bashrc ; source ~/.bash_aliases ; source ~/adam_aliases/adam_aliases'
 alias edit_bashrc='code ~/.bashrc'
 alias edit_bash_aliases='code ~/.bash_aliases'
 alias edit_adam_aliases='code ~/adam_aliases/adam_aliases'
