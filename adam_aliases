@@ -53,13 +53,13 @@ git_cache() {
 # Build with half the computer cores and a list of args for package name
 # No args = full catkin build
 cb() {
-    clear ; catkin build  -j $((($(nproc) + 1)/ 2)) $@
+    catkin build  -j $((($(nproc) + 1)/ 2)) $@
 }
 
 # Build with all cores but 1 and a list of args for package name
 # No args = full catkin build
 cbf() {
-    clear ; catkin build  -j $(($(nproc) - 1)) $@
+    catkin build  -j $(($(nproc) - 1)) $@
 }
 
 # Catkin clean without prompting for confirmation
