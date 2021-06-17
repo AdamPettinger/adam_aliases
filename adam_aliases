@@ -22,7 +22,7 @@ gl() {
         git log --graph --date=relative --pretty=format:'%C(yellow)commit %h %C(bold blue)%<(15,trunc)%an %Cgreen%<(13,trunc)%cd%Cred%d %n%C(yellow)  %m%Creset %s'
     else
         git log -n "$1" --graph --date=relative --pretty=format:'%C(yellow)commit %h %C(bold blue)%<(15,trunc)%an %Cgreen%<(13,trunc)%cd%Cred%d %n%C(yellow)  %m%Creset %s'
-    fi 
+    fi
 }
 
 # For updating submodules recursively
@@ -44,7 +44,7 @@ git_cache() {
         git config --global credential.helper cache
     else
         git config --global credential.helper 'cache --timeout '$1''
-    fi 
+    fi
 }
 
 #
