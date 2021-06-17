@@ -51,6 +51,7 @@ if [[ "$resp" = "y" ]]; then
   echo "  echo '#!/bin/bash' > .adam_aliases/current_user #empties current user file" >> scripts/change_user.sh
   echo "  echo 'source $working_dir/scripts/users/$username.sh' >> .adam_aliases/current_user #set to you" >> scripts/change_user.sh
   echo "  source $working_dir/scripts/users/$username.sh #and source the new file now" >> scripts/change_user.sh
+  echo "  git_$username #set new git user" >> scripts/change_user.sh
   echo "}" >> scripts/change_user.sh
 
 else # Not configure new user
@@ -59,3 +60,14 @@ else # Not configure new user
   echo "Make sure to 'source_USER' after this!"
   text_reset
 fi
+
+# Now we add stuff to the bashrc
+echo "" >> ~/.bashrc
+echo "source $working_dir/adam_aliases_bashrc" >> ~/.bashrc
+echo "export ALIASES_DIR="$working_dir >> ~/.bashrc
+
+# TODO:
+# - Make configure user a seperate script
+# - Add things to adam_aliases_bashrc
+# - Uninstaller?
+# - Add script to install common ubuntu tools (check email for deets)
