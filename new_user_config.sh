@@ -37,9 +37,10 @@ echo "alias git_$username='git config --global user.name $git_user ; git config 
 
 # Add an entry to change_user script for this user
 echo "" >> scripts/change_user.sh
-echo "function source_$username {" >> scripts/change_user.sh
+echo "function source_future_$username {" >> scripts/change_user.sh
 echo "  echo '#!/bin/bash' > .adam_aliases/current_user #empties current user file" >> scripts/change_user.sh
 echo "  echo 'source $ALIASES_DIR/scripts/users/$username.sh' >> .adam_aliases/current_user #set to you" >> scripts/change_user.sh
 echo "  source $ALIASES_DIR/scripts/users/$username.sh #and source the new file now" >> scripts/change_user.sh
 echo "  git_$username #set new git user" >> scripts/change_user.sh
 echo "}" >> scripts/change_user.sh
+echo "alias source_$username='source_future_$username ; source ~/.bashrc'" >> scripts/change_user.sh
