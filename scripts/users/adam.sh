@@ -1,9 +1,11 @@
+#!/bin/bash
+
+# An alias for changing the git user on this computer
+alias git_adam='git config --global user.name AdamPettinger ; git config --global user.email adam.pettinger@utexas.edu'
+
 #
 #    Git
 #
-
-# Set up git user as me
-alias gitadam='git config --global user.name AdamPettinger ; git config --global user.email adam.pettinger@utexas.edu'
 
 # Git command shortcuts
 alias gs='git status'
@@ -67,10 +69,6 @@ cc() {
     catkin clean --yes $@
 }
 
-# Sources the current workspace. Note: you need to be in the top level of a catkin workspace for this to work
-alias source_ws='source ./devel/setup.bash'
-
-
 #
 #    Navigation
 #
@@ -80,7 +78,6 @@ alias ....='cd ../../../'
 alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
-
 
 #
 #    ROS Stuff
@@ -106,7 +103,13 @@ replace(){
     grep -lr -e $1 * | xargs sed -i "s/$1/$2/g" ;
 }
 
-alias source_aliases='source ~/.bashrc ; source ~/.bash_aliases ; source ~/adam_aliases/adam_aliases'
+alias source_aliases='source ~/.bashrc ; source ~/.bash_aliases ; source $ALIASES_DIR/scripts/users/adam.sh'
 alias edit_bashrc='code ~/.bashrc'
 alias edit_bash_aliases='code ~/.bash_aliases'
-alias edit_adam_aliases='code ~/adam_aliases/adam_aliases'
+alias edit_adam_aliases='code $ALIASES_DIR/scripts/users/adam.sh'
+#!/bin/bash
+
+# ADD YOUR PERSONAL ALIASES HERE
+
+# An alias for changing the git user on this computer
+alias git_adam='git config --global user.name AdamPettinger ; git config --global user.email adam.pettinger@utexas.edu'
