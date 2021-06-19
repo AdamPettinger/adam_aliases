@@ -79,3 +79,12 @@ source_USERNAME # with your correct username
 ```
 
 Note that if the `source_USERNAME` fails, you might need to pull the repository!
+
+# Uninstall
+Run the uninstaller
+```sh
+cd $ALIASES_DIR
+./uninstaller.sh
+```
+
+Then you may remove the repository
