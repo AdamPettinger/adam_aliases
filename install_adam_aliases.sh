@@ -23,7 +23,7 @@ touch .adam_aliases/current_user
 
 # Now we add stuff to the bashrc
 echo "" >> ~/.bashrc
-echo "source $working_dir/adam_aliases_bashrc" >> ~/.bashrc
+echo "source $working_dir/.adam_aliases.bashrc" >> ~/.bashrc
 echo "export ALIASES_DIR="$working_dir >> ~/.bashrc
 
 # Ask if configure new user
@@ -41,8 +41,3 @@ else # Not configure new user
   echo "Make sure to 'source_USER' after this!"
   text_reset
 fi
-
-# TODO:
-# - Add things to adam_aliases_bashrc
-# - Uninstaller?
-# - Add script to install common ubuntu tools (check email for deets)
