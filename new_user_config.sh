@@ -44,3 +44,6 @@ echo "  source $ALIASES_DIR/scripts/users/$username.sh #and source the new file 
 echo "  git_$username #set new git user" >> scripts/change_user.sh
 echo "}" >> scripts/change_user.sh
 echo "alias source_$username='source_future_$username ; source ~/.bashrc'" >> scripts/change_user.sh
+
+# Add a folder for their temporary files
+mkdir $ALIASES_DIR/.adam_aliases/$username
