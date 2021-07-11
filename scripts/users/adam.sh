@@ -107,9 +107,58 @@ alias source_aliases='source ~/.bashrc ; source ~/.bash_aliases ; source $ALIASE
 alias edit_bashrc='code ~/.bashrc'
 alias edit_bash_aliases='code ~/.bash_aliases'
 alias edit_adam_aliases='code $ALIASES_DIR/scripts/users/adam.sh'
-#!/bin/bash
 
-# ADD YOUR PERSONAL ALIASES HERE
+# Searching
+function gr {
+    grep -r -I --color=always $1
+}
+function cgr {
+    clear ; gr $1
+}
+function gri {
+    grep -ri -I --color=always $1
+}
+function cgri {
+    clear ; gri $1
+}
 
-# An alias for changing the git user on this computer
-alias git_adam='git config --global user.name AdamPettinger ; git config --global user.email adam.pettinger@utexas.edu'
+# Take and put files into temporary directory
+function clear_adam_temp {
+    if [ -z "$1" ]; then
+        rm $ALIASES_DIR/.adam_aliases/adam/*
+    else
+        rm $ALIASES_DIR/.adam_aliases/adam/$1
+    fi
+}
+
+function put {
+    if [ -z "$1" ]; then
+        exit -1
+    else
+        mv $1 $ALIASES_DIR/.adam_aliases/adam/
+    fi
+}
+function putcopy {
+    if [ -z "$1" ]; then
+        exit -1
+    else
+        cp $1 $ALIASES_DIR/.adam_aliases/adam/
+    fi
+}
+function take {
+    if [ -z "$1" ]; then
+        exit -1
+    else
+        cp $ALIASES_DIR/.adam_aliases/adam/$1 .
+    fi
+}
+_temp_dir_completions()
+{
+    if [ "${#COMP_WORDS[@]}" != "2" ]; then
+        return
+    fi
+
+    COMPREPLY=($(compgen -W "$(ls $ALIASES_DIR/.adam_aliases/adam/ | sed 's/\t//')" -- "${COMP_WORDS[1]}"))
+}
+complete -F _temp_dir_completions take
+complete -F _temp_dir_completions clear_adam_temp
