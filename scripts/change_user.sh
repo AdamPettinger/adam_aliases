@@ -10,9 +10,9 @@ function unset_user {
 }
 
 function source_future_adam {
-  echo '#!/bin/bash' > .adam_aliases/current_user #empties current user file
-  echo 'source /home/picknik/adam_aliases/scripts/users/adam.sh' >> .adam_aliases/current_user #set to you
-  source /home/picknik/adam_aliases/scripts/users/adam.sh #and source the new file now
+  echo '#!/bin/bash' > $ALIASES_DIR/.adam_aliases/current_user #empties current user file
+  echo 'source $ALIASES_DIR/scripts/users/adam.sh' >> $ALIASES_DIR/.adam_aliases/current_user #set to you
+  source $ALIASES_DIR/scripts/users/adam.sh #and source the new file now
   git_adam #set new git user
 }
 alias source_adam='source_future_adam ; source ~/.bashrc'
