@@ -23,8 +23,8 @@ touch .adam_aliases/current_user
 
 # Now we add stuff to the bashrc
 echo "" >> ~/.bashrc
-echo "source $working_dir/.adam_aliases.bashrc" >> ~/.bashrc
 echo "export ALIASES_DIR="$working_dir >> ~/.bashrc
+echo "source $working_dir/.adam_aliases.bashrc" >> ~/.bashrc
 
 # Ask if configure new user
 echo "Do you want to configure a new user?"
