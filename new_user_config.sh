@@ -3,6 +3,9 @@
 # Script to configure a new user
 # Adds custom aliases file, add change user script, etc
 
+working_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd $working_dir
+
 source scripts/colors.sh
 
 # Make sure we have installed

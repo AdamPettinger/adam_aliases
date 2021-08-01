@@ -1,8 +1,10 @@
 #!/bin/bash
 
+working_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd $working_dir
+
 source scripts/colors.sh
 
-working_dir=$(pwd)
 text_green
 echo "Installing with directory: "$working_dir
 text_reset
