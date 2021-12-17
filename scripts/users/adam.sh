@@ -163,3 +163,12 @@ _temp_dir_completions()
 }
 complete -F _temp_dir_completions take
 complete -F _temp_dir_completions clear_adam_temp
+
+# Rosdep install
+function rosdep_install {
+    if [ -z "$1" ]; then
+        rosdep install --from-paths . --ignore-src -y
+    else
+        rosdep install --from-paths $1 --ignore-src -y
+    fi
+}
