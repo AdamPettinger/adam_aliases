@@ -64,6 +64,14 @@ cbf() {
     catkin build  -j $(($(nproc) - 1)) $@
 }
 
+cb_debug() {
+    catkin build  -j $(($(nproc) - 1)) --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
+}
+
+howto_debug() {
+    echo "Make sure this is in the launch: 'output=\"screen\" launch-prefix=\"gdb --args\"'"
+}
+
 # Catkin clean without prompting for confirmation
 cc() {
     catkin clean --yes $@
