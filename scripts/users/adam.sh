@@ -55,13 +55,13 @@ git_cache() {
 # Build with half the computer cores and a list of args for package name
 # No args = full catkin build
 cb() {
-    catkin build  -j $((($(nproc) + 1)/ 2)) $@
+    catkin build  -j $((($(nproc) + 1)/ 2)) --cmake-args -DCMAKE_BUILD_TYPE=Release $@
 }
 
 # Build with all cores but 1 and a list of args for package name
 # No args = full catkin build
 cbf() {
-    catkin build  -j $(($(nproc) - 1)) $@
+    catkin build  -j $(($(nproc) - 1)) --cmake-args -DCMAKE_BUILD_TYPE=Release $@
 }
 
 cb_debug() {
