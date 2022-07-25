@@ -69,7 +69,7 @@ cb_debug() {
 }
 
 howto_debug() {
-    echo "Make sure this is in the launch: 'output=\"screen\" launch-prefix=\"gdb --args\"'"
+    echo "Build with: --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo. Make sure this is in the launch: 'output=\"screen\" launch-prefix=\"xterm -e gdb --args\"'"
 }
 
 # Catkin clean without prompting for confirmation
