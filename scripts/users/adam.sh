@@ -180,3 +180,5 @@ function rosdep_install {
         rosdep install --from-paths $1 --ignore-src -y
     fi
 }
+
+alias get_wifi_IP='echo "$(ifconfig | grep -A 1 'w' | tail -1 | cut -c 14- | cut -d " " -f 1)"'
