@@ -71,6 +71,9 @@ cb_debug() {
 howto_debug() {
     echo "Build with: --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo. Make sure this is in the launch: 'output=\"screen\" launch-prefix=\"xterm -e gdb --args\"'"
 }
+howto_rosdep() {
+    echo "rosdep install: 'rosdep install --from-paths . --ignore-src -y'"
+}
 
 # Catkin clean without prompting for confirmation
 cc() {
