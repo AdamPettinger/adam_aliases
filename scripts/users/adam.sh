@@ -55,17 +55,56 @@ git_cache() {
 # Build with half the computer cores and a list of args for package name
 # No args = full catkin build
 cb() {
-    catkin build  -j $((($(nproc) + 1)/ 2)) --cmake-args -DCMAKE_BUILD_TYPE=Release $@
+    if [ -z "$ROS_DISTRO" ]
+    then
+        echo "No ROS_DISTRO set"
+    elif [ "$ROS_DISTRO" == "noetic" ] || [ "$ROS_DISTRO" == "kinetic" ]
+    then
+        catkin build  -j $((($(nproc) + 1)/ 2)) --cmake-args -DCMAKE_BUILD_TYPE=Release $@
+    else
+        if [ -z "$1" ]
+        then
+            colcon build --parallel-workers $((($(nproc) + 1)/ 2)) --cmake-args -DCMAKE_BUILD_TYPE=Release
+        else
+            colcon build --parallel-workers $((($(nproc) + 1)/ 2)) --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-select $@
+        fi
+    fi
 }
 
 # Build with all cores but 1 and a list of args for package name
 # No args = full catkin build
 cbf() {
-    catkin build  -j $(($(nproc) - 1)) --cmake-args -DCMAKE_BUILD_TYPE=Release $@
+    if [ -z "$ROS_DISTRO" ]
+    then
+        echo "No ROS_DISTRO set"
+    elif [ "$ROS_DISTRO" == "noetic" ] || [ "$ROS_DISTRO" == "kinetic" ]
+    then
+        catkin build  -j $(($(nproc) - 1)) --cmake-args -DCMAKE_BUILD_TYPE=Release $@
+    else
+        if [ -z "$1" ]
+        then
+            colcon build --parallel-workers $(($(nproc) - 1)) --cmake-args -DCMAKE_BUILD_TYPE=Release
+        else
+            colcon build --parallel-workers $(($(nproc) - 1)) --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-select $@
+        fi
+    fi
 }
 
 cb_debug() {
-    catkin build  -j $(($(nproc) - 1)) --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    if [ -z "$ROS_DISTRO" ]
+    then
+        echo "No ROS_DISTRO set"
+    elif [ "$ROS_DISTRO" == "noetic" ] || [ "$ROS_DISTRO" == "kinetic" ]
+    then
+        catkin build  -j $(($(nproc) - 1)) --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo $@
+    else
+        if [ -z "$1" ]
+        then
+            colcon build --parallel-workers $(($(nproc) - 1)) --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
+        else
+            colcon build --parallel-workers $(($(nproc) - 1)) --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo --packages-select $@
+        fi
+    fi
 }
 
 howto_debug() {
