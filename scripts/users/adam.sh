@@ -107,6 +107,82 @@ cb_debug() {
     fi
 }
 
+findtop() {
+    if [ "$ROS_DISTRO" == "noetic" ] || [ "$ROS_DISTRO" == "kinetic" ]
+    then
+        if [ -z "$1" ]
+        then
+            rostopic list
+        else
+            rostopic list | grep $1
+        fi
+    else
+        if [ -z "$1" ]
+        then
+            ros2 topic list
+        else
+            ros2 topic list | grep $1
+        fi
+    fi
+}
+
+findnode() {
+    if [ "$ROS_DISTRO" == "noetic" ] || [ "$ROS_DISTRO" == "kinetic" ]
+    then
+        if [ -z "$1" ]
+        then
+            rosnode list
+        else
+            rosnode list | grep $1
+        fi
+    else
+        if [ -z "$1" ]
+        then
+            ros2 node list
+        else
+            ros2 node list | grep $1
+        fi
+    fi
+}
+
+findsrv() {
+    if [ "$ROS_DISTRO" == "noetic" ] || [ "$ROS_DISTRO" == "kinetic" ]
+    then
+        if [ -z "$1" ]
+        then
+            rosservice list
+        else
+            rosservice list | grep $1
+        fi
+    else
+        if [ -z "$1" ]
+        then
+            ros2 service list
+        else
+            ros2 service list | grep $1
+        fi
+    fi
+}
+
+findparam() {
+    if [ "$ROS_DISTRO" == "noetic" ] || [ "$ROS_DISTRO" == "kinetic" ]
+    then
+        if [ -z "$1" ]
+        then
+            rosparam list
+        else
+            rosparam list | grep $1
+        fi
+    else
+        if [ -z "$1" ]
+        then
+            ros2 param list
+        else
+            ros2 param list | grep $1
+        fi
+    fi
+}
+
 howto_debug() {
     echo "Build with: --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo. Make sure this is in the launch: 'output=\"screen\" launch-prefix=\"xterm -e gdb --args\"'"
 }
