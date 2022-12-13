@@ -237,13 +237,13 @@ alias source_aliases='source ~/.bashrc ; source ~/.bash_aliases ; source $ALIASE
 
 # Searching
 function gr {
-    grep -rn -I --color=always $1
+    grep -rn -I --exclude-dir=.git --color=always $1
 }
 function cgr {
     clear ; gr $1
 }
 function gri {
-    grep -rin -I --color=always $1
+    grep -rin -I --exclude-dir=.git --color=always $1
 }
 function cgri {
     clear ; gri $1
