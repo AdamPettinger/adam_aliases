@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # An alias for changing the git user on this computer
-alias git_adam='git config --global user.name AdamPettinger ; git config --global user.email adam.pettinger@utexas.edu'
+alias git_adam='git config --global user.name AdamPettinger ; git config --global user.email adam.l.pettinger@gmail.com'
 
 #
 #    Git
