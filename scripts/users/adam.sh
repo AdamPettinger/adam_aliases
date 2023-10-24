@@ -189,6 +189,12 @@ howto_debug() {
 howto_rosdep() {
     echo "rosdep install: 'rosdep install --from-paths . --ignore-src -y'"
 }
+howto_docker_run() {
+    echo "To make a new container from image 'docker run -it --name <NEW_CONTAINER_NAME> <IMAGE> /bin/bash'"
+}
+howto_docker_exec() {
+    echo "To launch already existing container 'docker start <CONTAINER_NAME>' and then 'docker exec -it /bin/bash'"
+}
 
 # Catkin clean without prompting for confirmation
 cc() {

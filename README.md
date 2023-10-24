@@ -69,7 +69,7 @@ git clone https://github.com/AdamPettinger/adam_aliases.git
 cd adam_aliases
 
 # Do NOT configure a new user during the install
-./install_adam_aliases.sh
+./quiet_install.sh
 ```
 
 Now just source your username as normal:
