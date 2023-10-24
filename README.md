@@ -1,6 +1,5 @@
 # Adam's Aliases
 A repo all about aliases:
-  - Common aliases for all
   - Sync your personal aliases between computers
   - Manage multiple users with different personal aliases
 
@@ -88,3 +87,11 @@ cd $ALIASES_DIR
 ```
 
 Then you may remove the repository
+
+# Docker
+This repo has dockerfiles to make ROS-based images that also contain common tools and these aliases. Get up and running containers with this stuff easily (for ROS Iron, substitute as needed)
+```sh
+docker build -t adam-iron $ALIASES_DIR/dockerfiles/iron/
+docker run -it --name <NEW_CONTAINER_NAME> adam-iron /bin/bash
+source_adam # (Inside docker container)
+```
