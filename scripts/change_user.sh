@@ -1,5 +1,7 @@
 #!/bin/bash
 
+alias git_noone='git config --global user.name --unset && git config --global user.email --unset'
+
 function unset_user {
   # Unset git user
   git config --global user.name --unset
