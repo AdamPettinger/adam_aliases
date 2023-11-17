@@ -195,6 +195,9 @@ howto_docker_run() {
 howto_docker_exec() {
     echo "To launch already existing container 'docker start <CONTAINER_NAME>' and then 'docker exec -it /bin/bash'"
 }
+howto_ros2_create_pkg() {
+    echo "Make packge with optional node and library: 'ros2 pkg create --build-type ament_cmake --node-name <node_name> --library-name <lib_name> <package_name>'"
+}
 
 # Catkin clean without prompting for confirmation
 cc() {
