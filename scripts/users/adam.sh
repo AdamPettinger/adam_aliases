@@ -184,7 +184,7 @@ findparam() {
 }
 
 howto_debug() {
-    echo "Build with: --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo. Make sure this is in the launch: 'output=\"screen\" launch-prefix=\"xterm -e gdb --args\"'"
+    echo "Build with: --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo. Make sure this is in the launch: 'output=\"screen\", prefix=[\"xterm -e gdb --args\"],'"
 }
 howto_rosdep() {
     echo "rosdep install: 'rosdep install --from-paths . --ignore-src -y'"
