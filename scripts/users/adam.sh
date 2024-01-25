@@ -198,6 +198,9 @@ howto_docker_exec() {
 howto_ros2_create_pkg() {
     echo "Make packge with optional node and library: 'ros2 pkg create --build-type ament_cmake --node-name <node_name> --library-name <lib_name> <package_name>'"
 }
+howto_ros2_print_msgs() {
+    echo "rosidl_generator_traits::to_yaml(msg)"
+}
 
 # Catkin clean without prompting for confirmation
 cc() {
