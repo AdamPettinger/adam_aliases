@@ -189,8 +189,19 @@ howto_debug() {
 howto_rosdep() {
     echo "rosdep install: 'rosdep install --from-paths . --ignore-src -y'"
 }
+howto_docker_build() {
+    printf "To make a new image from a docker file:  \ndocker build -t <IMAGE_NAME> <DIR_WITH_DOCKERFILE>\n\n"
+    printf "Pass an arg into Dockerfile with: '--build-arg <ARG_NAME>=<ARG_VAL>'\n\n"
+    printf "If you want to use network interfaces in the docker: '--network=host'\n"
+}
 howto_docker_run() {
-    echo "To make a new container from image 'docker run -it --name <NEW_CONTAINER_NAME> <IMAGE> /bin/bash'"
+    printf "To make a new container from image:\n\n"
+    echo "xhost +local:root &> /dev/null"
+    echo "docker run -it --network=host --privileged --name <NEW_CONT_NAME> \ "
+    echo "--mount type=bind,source=<ABS_PATH>,target=<ABS_PATH> \ "
+    echo "--env=DISPLAY \ "
+    echo "<IMAGE_NAME> /bin/bash"
+    echo "xhost -local:root 1>/dev/null 2>&1"
 }
 howto_docker_exec() {
     echo "To launch already existing container 'docker start <CONTAINER_NAME>' and then 'docker exec -it /bin/bash'"

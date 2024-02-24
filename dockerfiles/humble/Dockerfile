@@ -14,3 +14,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 WORKDIR /root
 RUN git clone --depth 1 https://github.com/AdamPettinger/adam_aliases.git
 RUN ./adam_aliases/quiet_install.sh
+
+# Source the ROS install in bashrc
+RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
