@@ -45,6 +45,10 @@ echo "  echo '#!/bin/bash' > \$ALIASES_DIR/.adam_aliases/current_user #empties c
 echo "  echo 'source \$ALIASES_DIR/scripts/users/$username.sh' >> \$ALIASES_DIR/.adam_aliases/current_user #set to you" >> scripts/change_user.sh
 echo "  source \$ALIASES_DIR/scripts/users/$username.sh #and source the new file now" >> scripts/change_user.sh
 echo "  git_$username #set new git user" >> scripts/change_user.sh
+echo "  DIR=\"\$ALIASES_DIR/.adam_aliases/$username\"" >> scripts/change_user.sh
+echo "  if [ ! -d \"\$DIR\" ]; then" >> scripts/change_user.sh
+echo "    mkdir \"\$DIR\"" >> scripts/change_user.sh
+echo "  fi" >> scripts/change_user.sh
 echo "}" >> scripts/change_user.sh
 echo "alias source_$username='source_future_$username ; source ~/.bashrc'" >> scripts/change_user.sh
 
