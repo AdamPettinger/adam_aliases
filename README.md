@@ -89,9 +89,25 @@ cd $ALIASES_DIR
 Then you may remove the repository
 
 # Docker
-This repo has dockerfiles to make ROS-based images that also contain common tools and these aliases. Get up and running containers with this stuff easily (for ROS Iron, substitute as needed)
+This repo has examples to run ROS in Docker easily. For using `docker-compose`:
 ```sh
-docker build -t adam-iron $ALIASES_DIR/dockerfiles/iron/
+# Docker Compose, run in directory with docker-compose.yaml
+docker compose build --build-arg ROS_DISTRO="galactic"
+
+# Or:
+# docker compose build --build-arg ROS_DISTRO="galactic"
+
+# Start container with:
+docker compose up dev
+
+# And get prompts in container with: (new terminal)
+docker compose exec -it dev bash
+source_adam # (Inside docker container)
+```
+
+For running without `docker-compose`:
+```sh
+docker build -t adam-iron $ALIASES_DIR/docker/ --build-arg ROS_DISTRO="iron"
 docker run -it --name <NEW_CONTAINER_NAME> adam-iron /bin/bash
 source_adam # (Inside docker container)
 ```
