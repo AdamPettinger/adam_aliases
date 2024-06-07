@@ -283,32 +283,36 @@ function clear_adam_temp {
 
 function put {
     if [ -z "$1" ]; then
-        exit -1
+        exit 0
     else
-        mv $1 $ALIASES_DIR/.adam_aliases/adam/
+        mv "$@" "$ALIASES_DIR"/.adam_aliases/adam/
     fi
 }
 function putcopy {
     if [ -z "$1" ]; then
-        exit -1
+        exit 0
     else
-        cp $1 $ALIASES_DIR/.adam_aliases/adam/
+        cp "$@" "$ALIASES_DIR"/.adam_aliases/adam/
     fi
 }
 function take {
     if [ -z "$1" ]; then
-        exit -1
+        exit 0
     else
-        cp $ALIASES_DIR/.adam_aliases/adam/$1 .
+        for file in "$@"; do
+            # cp "$file" .
+            cp "$ALIASES_DIR"/.adam_aliases/adam/"$file" .
+        done
     fi
 }
 _temp_dir_completions()
 {
-    if [ "${#COMP_WORDS[@]}" != "2" ]; then
-        return
-    fi
+    local cur
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
 
-    COMPREPLY=($(compgen -W "$(ls $ALIASES_DIR/.adam_aliases/adam/ | sed 's/\t//')" -- "${COMP_WORDS[1]}"))
+    local files=$(ls "$ALIASES_DIR"/.adam_aliases/adam/)
+    COMPREPLY=($(compgen -W "$files" -- "$cur"))
 }
 complete -F _temp_dir_completions take
 complete -F _temp_dir_completions clear_adam_temp
