@@ -27,6 +27,8 @@ gl() {
     fi
 }
 
+alias vcsc='vcs custom --git --args'
+
 # For updating submodules recursively
 alias gsub='git submodule update --init --recursive'
 
