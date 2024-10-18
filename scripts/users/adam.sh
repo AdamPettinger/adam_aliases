@@ -345,3 +345,26 @@ function rosdep_install {
 }
 
 alias get_wifi_IP='echo "$(ifconfig | grep -A 1 'w' | tail -1 | cut -c 14- | cut -d " " -f 1)"'
+
+# For setting rad alias
+function rad_setup {
+    local filename="rad.bash"
+    local current_dir="$(pwd)"
+    local home_dir="$HOME"
+
+    # Traverse up the directory tree
+    while [[ "$current_dir" != "/" && "$current_dir" != "$home_dir" ]]; do
+        if [[ -f "$current_dir/$filename" ]]; then
+            # If the file is found, create an alias to cd into the directory
+            alias rad="cd '$current_dir' && ./rad.bash"
+            echo "Alias 'rad' created for directory: $current_dir"
+            return 0
+        fi
+        # Move up one directory
+        current_dir="$(dirname "$current_dir")"
+    done
+
+    # If the file is not found, print an error message
+    echo "File '$filename' not found in any parent directories up to the home directory."
+    return 1
+}
