@@ -264,7 +264,17 @@ alias edit_bashrc='code ~/.bashrc'
 alias edit_bash_aliases='code ~/.bash_aliases'
 alias edit_adam_aliases='code $ALIASES_DIR/scripts/users/adam.sh'
 
-alias source_aliases='source ~/.bashrc ; source ~/.bash_aliases ; source $ALIASES_DIR/scripts/users/adam.sh'
+function source_aliases {
+    if [[ -f "~/.bashrc" ]]; then
+        source ~/.bashrc
+    fi
+    if [[ -f "~/.bash_aliases" ]]; then
+        source ~/.bash_aliases
+    fi
+    if [[ -f "$ALIASES_DIR/scripts/users/adam.sh" ]]; then
+        source $ALIASES_DIR/scripts/users/adam.sh
+    fi
+}
 
 # Searching
 function gr {
