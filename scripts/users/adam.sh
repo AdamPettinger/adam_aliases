@@ -28,6 +28,9 @@ gl() {
 }
 
 alias vcsc='vcs custom --git --args'
+alias vs='vcs status'
+alias vd='vcs diff'
+alias vb='vcs branch'
 
 # For updating submodules recursively
 alias gsub='git submodule update --init --recursive'
