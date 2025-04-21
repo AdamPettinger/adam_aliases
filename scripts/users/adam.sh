@@ -371,3 +371,6 @@ function rad_setup {
     echo "File '$filename' not found in any parent directories up to the home directory."
     return 1
 }
+
+# TMux Settings
+alias tmux_setup='cp $ALIASES_DIR/config/tmux.conf $HOME/.tmux.conf'
