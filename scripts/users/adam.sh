@@ -253,7 +253,7 @@ alias killros='killall -9 roscore ; killall -9 rosmaster'
 #   C++ Formatting
 #
 # Clang format recursivly in the current directory, targetting h, hpp, and cpp files
-alias clang_cpp='find . -name '*.h' -or -name '*.hpp' -or -name '*.cpp' -o -name '*.c' -o -name '*.cc' -o -name '*.proto' | xargs clang-format -i -style=file'
+alias clang_cpp='find . -regex '.*\.\(cpp\|hpp\|c\|h\|hh\|cc\)$' | xargs clang-format -i -style=file'
 
 #
 #   File navigation and formatting
