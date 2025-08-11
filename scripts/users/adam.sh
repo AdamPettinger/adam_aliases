@@ -374,3 +374,34 @@ function rad_setup {
 
 # TMux Settings
 alias tmux_setup='cp $ALIASES_DIR/config/tmux.conf $HOME/.tmux.conf'
+
+# For running a terminal while also logging its output
+logrun() {
+  local logfile="terminal_output.txt"
+ 
+  # Show help if no args or -h/--help
+  if [[ $# -eq 0 || "$1" == "-h" || "$1" == "--help" ]]; then
+    echo "Usage: logrun [-f logfile] <command>"
+    echo ""
+    echo "Options:"
+    echo "  -f, --file FILE     Specify custom log file (default: terminal_output.txt)"
+    echo "  -h, --help          Show this help message"
+    echo ""
+    echo "Example:"
+    echo "  logrun -f mylog.txt \"ls -la /etc\""
+    return 0
+  fi
+ 
+  # Set custom log file if specified
+  if [[ "$1" == "-f" || "$1" == "--file" ]]; then
+    logfile="$2"
+    shift 2
+  fi
+ 
+  {
+    echo ""
+    date
+    echo "$*"
+    eval "$*"
+  } 2>&1 | tee -a "$logfile"
+}
