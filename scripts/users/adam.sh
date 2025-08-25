@@ -27,6 +27,10 @@ gl() {
     fi
 }
 
+git_change_author_to_adam() {
+    git commit --amend --author="AdamPettinger <adam.l.pettinger@gmail.com>"
+}
+
 alias vcsc='vcs custom --git --args'
 alias vs='vcs status'
 alias vd='vcs diff'
