@@ -227,6 +227,15 @@ howto_ros2_topic_pub() {
     echo "To make the stamp of a header publish automagically:"
     echo "\"{'header':'auto'}\""
 }
+howto_git_branch_in_prompt() {
+    echo "To display the git branch in your prompt, add these lines to your bashrc"
+    echo ""
+    echo "# Git branch in prompt."
+    echo "parse_git_branch() {"
+    echo "  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'"
+    echo "}"
+    echo "export PS1=\"\${PS1}\[\033[1;31m\]\\\$(parse_git_branch)\[\033[00m\]\""
+}
 
 # Catkin clean without prompting for confirmation
 cc() {
