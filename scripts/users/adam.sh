@@ -226,6 +226,8 @@ howto_ros2_topic_pub() {
     echo "\"{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}\""
     echo "To make the stamp of a header publish automagically:"
     echo "\"{'header':'auto'}\""
+    echo "or"
+    echo "'header': {stamp: now, frame_id: 'frame_name'}"
 }
 howto_git_branch_in_prompt() {
     echo "To display the git branch in your prompt, add these lines to your bashrc"
