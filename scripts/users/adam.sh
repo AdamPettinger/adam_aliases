@@ -395,13 +395,15 @@ alias tmux_setup='cp $ALIASES_DIR/config/tmux.conf $HOME/.tmux.conf'
 # For running a terminal while also logging its output
 logrun() {
   local logfile="terminal_output.txt"
+    local overwrite=false
  
   # Show help if no args or -h/--help
   if [[ $# -eq 0 || "$1" == "-h" || "$1" == "--help" ]]; then
-    echo "Usage: logrun [-f logfile] <command>"
+        echo "Usage: logrun [-f logfile] [-o] <command>"
     echo ""
     echo "Options:"
     echo "  -f, --file FILE     Specify custom log file (default: terminal_output.txt)"
+        echo "  -o, --overwrite     Overwrite log file instead of appending"
     echo "  -h, --help          Show this help message"
     echo ""
     echo "Example:"
@@ -409,16 +411,49 @@ logrun() {
     return 0
   fi
  
-  # Set custom log file if specified
-  if [[ "$1" == "-f" || "$1" == "--file" ]]; then
-    logfile="$2"
-    shift 2
-  fi
+    # Parse options (-f/--file and -o/--overwrite)
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -f|--file)
+                logfile="$2"
+                shift 2
+                ;;
+            -o|--overwrite)
+                overwrite=true
+                shift
+                ;;
+            --)
+                shift
+                break
+                ;;
+            -*)
+                echo "logrun: unknown option '$1'"
+                return 1
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    if [[ $# -eq 0 ]]; then
+        echo "logrun: missing command"
+        return 1
+    fi
  
-  {
-    echo ""
-    date
-    echo "$*"
-    eval "$*"
-  } 2>&1 | tee -a "$logfile"
+    if [[ "$overwrite" == true ]]; then
+        {
+            echo ""
+            date
+            echo "$*"
+            eval "$*"
+        } 2>&1 | tee "$logfile"
+    else
+        {
+            echo ""
+            date
+            echo "$*"
+            eval "$*"
+        } 2>&1 | tee -a "$logfile"
+    fi
 }
