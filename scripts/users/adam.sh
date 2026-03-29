@@ -459,5 +459,10 @@ logrun() {
 }
 
 find_pid() {
-  ps -aux | grep "$1" | grep -v grep | awk '{gsub($2,"\033[0;32m"$2"\033[0m"); print}'
+  ps -aux | grep "$1" | grep -v grep | \
+    awk -v term="$1" '{
+      gsub($2, "\033[0;32m" $2 "\033[0m");
+      gsub(term, "\033[0;31m" term "\033[0m");
+      print
+    }'
 }
