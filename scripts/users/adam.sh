@@ -457,3 +457,7 @@ logrun() {
         } 2>&1 | tee -a "$logfile"
     fi
 }
+
+find_pid() {
+  ps -aux | grep "$1" | grep -v grep | awk '{gsub($2,"\033[0;32m"$2"\033[0m"); print}'
+}
