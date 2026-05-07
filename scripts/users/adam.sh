@@ -466,3 +466,15 @@ find_pid() {
       print
     }'
 }
+
+git_prune_branches() {
+    local remote="${1:-origin}"
+
+    # Prune the remote
+    git remote prune "$remote" || return 1
+
+    # Delete branches whose upstream is marked ": gone]"
+    git branch -vv \
+      | awk '/: gone]/{print $1}' \
+      | xargs -r git branch -D
+}
