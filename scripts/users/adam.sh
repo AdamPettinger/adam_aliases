@@ -478,3 +478,21 @@ git_prune_branches() {
       | awk '/: gone]/{print $1}' \
       | xargs -r git branch -D
 }
+
+# Git aliases for randos who work with me
+function git_mamta() {
+    git config --global user.name "mkorwani020"
+    git config --global user.email "mkorwani020@tamu.edu"
+}
+function git_nick() {
+    git config --global user.name "navazquez"
+    git config --global user.email "navazquez@tamu.edu"
+}
+function git_ryan() {
+    git config --global user.name "ryan-barry-99"
+    git config --global user.email "ryanbarry@tamu.edu"
+}
+function git_vidur() {
+    git config --global user.name "vkzimmerman"
+    git config --global user.email "vzimmerm@tamu.edu"
+}
