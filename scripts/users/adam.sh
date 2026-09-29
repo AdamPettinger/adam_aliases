@@ -496,3 +496,7 @@ function git_vidur() {
     git config --global user.name "vkzimmerman"
     git config --global user.email "vzimmerm@tamu.edu"
 }
+function git_jonas() {
+    git config --global user.name "jonas-la"
+    git config --global user.email "jonasaustinland@tamu.edu"
+}
